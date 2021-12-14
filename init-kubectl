@@ -33,5 +33,6 @@ else
 fi
 
 kubectl config set-context default --cluster=default --user=${PLUGIN_KUBERNETES_USER}
+kubectl config set-context default --namespace=${PLUGIN_NAMESPACE}
 kubectl config use-context default
 
