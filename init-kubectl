@@ -10,6 +10,10 @@ if [ -z ${PLUGIN_KUBERNETES_USER} ]; then
   PLUGIN_KUBERNETES_USER="default"
 fi
 
+if [ -z ${PLUGIN_KUBERNETES_DEFAULT_NAMESPACE} ]; then
+  KUBERNETES_DEFAULT_NAMESPACE=${PLUGIN_KUBERNETES_DEFAULT_NAMESPACE}
+fi
+
 if [ ! -z ${PLUGIN_KUBERNETES_TOKEN} ]; then
   KUBERNETES_TOKEN=${PLUGIN_KUBERNETES_TOKEN}
 fi
@@ -33,6 +37,5 @@ else
 fi
 
 kubectl config set-context default --cluster=default --user=${PLUGIN_KUBERNETES_USER}
-kubectl config set-context default --namespace=${PLUGIN_NAMESPACE}
+kubectl config set-context default --namespace=${KUBERNETES_DEFAULT_NAMESPACE}
 kubectl config use-context default
-
